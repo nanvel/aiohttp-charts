@@ -1,19 +1,13 @@
 import datetime
 import json
 
+from ..base import BaseChart
 from ..utils.colors import COLORS
-from .. import get_chart_id
 
 
-class TimeLineChart:
+class TimeLineChart(BaseChart):
 
     MAIN_AXES = 'main'
-
-    def __init__(self, title, height=400):
-        self.title = title
-        self.height = height
-        self._lines = []
-        self.chart_id = get_chart_id()
 
     def add_line(self, label, points, axes_id=None, fill=False):
         axes_id = axes_id or self.MAIN_AXES
