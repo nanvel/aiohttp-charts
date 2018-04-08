@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{% if development %}/charts-static/Chart.bundle.min.js{% else %}https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js{% endif %}"></script>
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    {% for chart in charts %}
+      <h2>{{ chart.title }}</h2>
+      <div style="height: {{ chart.height }}px;"><canvas id="chart-{{ chart.chart_id }}"></canvas></div>
+      <script>
+        var c{{ chart.chart_id }}Chart = new Chart(
+            document.getElementById("chart-{{ chart.chart_id }}").getContext("2d"),
+            {{ chart.to_js()|safe }}
+        );
+      </script>
+    {% endfor %}
+  </body>
+</html>
