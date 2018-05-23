@@ -6,8 +6,10 @@
     <title>{{ title }}</title>
   </head>
   <body>
+    {{ extra|safe }}
     {% for chart in charts %}
       <h2>{{ chart.title }}</h2>
+      {{ chart.extra|safe }}
       <canvas id="chart-{{ chart.chart_id }}"></canvas>
       <script>
         var c{{ chart.chart_id }}Chart = new Chart(

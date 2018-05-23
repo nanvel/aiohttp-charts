@@ -41,7 +41,7 @@ def read(file_name):
 
 setup(
     name="aiohttp-charts",
-    version='0.0.1',
+    version='0.0.2',
     description="Show charts in aiohttp.",
     long_description=read('README.md'),
     license='The MIT License',

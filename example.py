@@ -9,7 +9,7 @@ from aiohttp_charts.line import TimeLineChart
 def handler(request):
     composer = ChartsComposer(title="Example")
 
-    chart1 = TimeLineChart(title='Example chart 1')
+    chart1 = TimeLineChart(title='Example chart 1', extra="<p>Example message!</p>")
     now = datetime.datetime.utcnow()
     chart1.add_line(
         label='Line 1',
