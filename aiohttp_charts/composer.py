@@ -12,8 +12,12 @@ jinja_env = Environment(
 
 class ChartsComposer:
 
-    def __init__(self, title):
+    def __init__(self, title, extra=None):
+        """
+        :param extra: extra html
+        """
         self.title = title
+        self._extra = extra
         self._charts = []
         self._template = jinja_env.get_template('charts.j2')
 
@@ -24,7 +28,8 @@ class ChartsComposer:
         return web.Response(
             body=self._template.render({
                 'charts': self._charts,
-                'development': app.get('aiohttp_charts_development', False)
+                'development': app.get('aiohttp_charts_development', False),
+                'extra': self._extra or ''
             }),
             content_type='text/html'
         )

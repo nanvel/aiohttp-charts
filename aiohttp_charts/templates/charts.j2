@@ -6,9 +6,11 @@
     <title>{{ title }}</title>
   </head>
   <body>
+    {{ extra|safe }}
     {% for chart in charts %}
       <h2>{{ chart.title }}</h2>
-      <div style="height: {{ chart.height }}px;"><canvas id="chart-{{ chart.chart_id }}"></canvas></div>
+      {{ chart.extra|safe }}
+      <canvas id="chart-{{ chart.chart_id }}"></canvas>
       <script>
         var c{{ chart.chart_id }}Chart = new Chart(
             document.getElementById("chart-{{ chart.chart_id }}").getContext("2d"),
